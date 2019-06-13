@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import static com.example.simba.R.color.colorPrimary;
 
@@ -25,12 +26,36 @@ public class AddFirstAsset extends AppCompatActivity {
     private EditText jumlah;
     private DatePickerDialog datePickerDialog;
     private AssetIn assets;
+    private TextView message;
+    static String mode="";
+
+    private TextView ern;
+    private TextView erj;
+    private TextView erni;
+    private TextView ertg;
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_first_asset);
 //        asset = new AssetIn();
+        message = findViewById(R.id.message);
+        if(mode.equals("1")){
+            message.setText("Silahkan masukkan data asset Anda :");
+        }
+        else{
+            message.setText("Silahkan masukkan data asset pertama Anda :");
+        }
+        ern = findViewById(R.id.errorname);
+        ern.setVisibility(View.GONE);
+        erj = findViewById(R.id.errorjml);
+        erj.setVisibility(View.GONE);
+        erni = findViewById(R.id.errornilai);
+        erni.setVisibility(View.GONE);
+        ertg = findViewById(R.id.errortgl);
+        ertg.setVisibility(View.GONE);
+
         nama = findViewById(R.id.assetName);
         harga = findViewById(R.id.nilai);
         jumlah = findViewById(R.id.jumlahAsset);
@@ -39,7 +64,29 @@ public class AddFirstAsset extends AppCompatActivity {
         addAsset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goHome();
+                ern.setVisibility(View.GONE);
+                erni.setVisibility(View.GONE);
+                erj.setVisibility(View.GONE);
+                ertg.setVisibility(View.GONE);
+                if(nama.getText().toString().isEmpty() || harga.getText().toString().isEmpty() ||
+                        jumlah.getText().toString().isEmpty() || tanggal.getText().toString().isEmpty()){
+                    if(nama.getText().toString().isEmpty()){
+                        ern.setVisibility(View.VISIBLE);
+                    }
+                    if(jumlah.getText().toString().isEmpty()){
+                        erj.setVisibility(View.VISIBLE);
+                    }
+                    if(harga.getText().toString().isEmpty()){
+                        erni.setVisibility(View.VISIBLE);
+                    }
+                    if(tanggal.getText().toString().isEmpty()){
+                        ertg.setVisibility(View.VISIBLE);
+                    }
+                }
+                else{
+                    goHome();
+                }
+
             }
         });
         tanggal.setOnClickListener(new View.OnClickListener() {

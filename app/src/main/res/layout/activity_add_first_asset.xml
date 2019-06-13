@@ -21,6 +21,7 @@
                 android:src="@drawable/ic_assignment_black_24dp"/>
         </FrameLayout>
         <TextView
+            android:id="@+id/message"
             android:layout_marginLeft="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -40,6 +41,15 @@
             android:hint="Nama asset"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/errorname"
+            android:layout_marginLeft="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nama asset tidak boleh kosong"
+            android:visibility="gone"
+            android:typeface="sans"
+            android:textColor="@android:color/holo_red_light"/>
         <EditText
             android:id="@+id/jumlahAsset"
             android:inputType="number"
@@ -51,6 +61,15 @@
             android:hint="Jumlah asset"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/errorjml"
+            android:layout_marginLeft="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Jumlah asset tidak boleh kosong"
+            android:visibility="gone"
+            android:typeface="sans"
+            android:textColor="@android:color/holo_red_light"/>
         <EditText
             android:id="@+id/nilai"
             android:inputType="number"
@@ -62,6 +81,15 @@
             android:hint="Nilai asset"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/errornilai"
+            android:layout_marginLeft="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nilai asset tidak boleh kosong"
+            android:visibility="gone"
+            android:typeface="sans"
+            android:textColor="@android:color/holo_red_light"/>
         <EditText
             android:id="@+id/tanggal"
             android:focusable="false"
@@ -73,6 +101,15 @@
             android:hint="Tanggal Masuk"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/errortgl"
+            android:layout_marginLeft="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tanggal asset tidak boleh kosong"
+            android:visibility="gone"
+            android:typeface="sans"
+            android:textColor="@android:color/holo_red_light"/>
 
         <Button
             android:id="@+id/tambah"

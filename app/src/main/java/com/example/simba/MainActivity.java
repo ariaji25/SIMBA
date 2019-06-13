@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         else{
             User.nama = currentUser.getDisplayName();
             User.email = currentUser.getEmail();
+            Dataasset.dataasset=null;
             user1 = new User();
             user1.getKey();
             Thread t1 = new Thread(){
@@ -52,11 +53,11 @@ public class MainActivity extends AppCompatActivity {
                 public void run() {
                     super.run();
                     try {
-                        while (Dataasset.dataasset==null){
+                        while (Dataasset.dataasset==null||Dataasset.dataasset.size()==0){
                             Log.w("asset", "checkasset");
                             sleep(1000);
                         }
-                        if(Dataasset.dataasset!=null){
+                        if(Dataasset.dataasset.size()!=0){
                             Log.w("asset", "notEmpty");
                             goHome();
                         }

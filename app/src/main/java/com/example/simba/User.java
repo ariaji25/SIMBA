@@ -124,6 +124,7 @@ public class User extends Databaseconnect{
 
     }
     void goCreate(Context c){
+        AddFirstAsset.mode="0";
         Intent home = new Intent(c,AddFirstAsset.class);
         c.startActivity(home);
     }
