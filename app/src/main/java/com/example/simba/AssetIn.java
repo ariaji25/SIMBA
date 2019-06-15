@@ -7,6 +7,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -19,6 +20,7 @@ public class AssetIn extends Databaseconnect{
     String jumlah="";
     String harga="";
     String tanggal="";
+    String key ="";
     AssetIn(){
         super();
     }
@@ -52,6 +54,13 @@ public class AssetIn extends Databaseconnect{
 
     public void setTanggal(String tanggal) {
         this.tanggal = tanggal;
+    }
+    public void  setKey(String key){
+        this.key=key;
+    }
+
+    public String getKey(){
+        return this.key;
     }
 
     public void createMap(){
@@ -98,6 +107,35 @@ public class AssetIn extends Databaseconnect{
                         else {
                             Log.w("asset", "filure");
                         }
+                    }
+                });
+    }
+
+    public void updateAsset(String key,String nam, String jml, String nil, String tgl){
+        DocumentReference asset = db.collection("user").document(User.keyDoc).collection("assetIn").document(key);
+        asset.update("nama", nam);
+        asset.update("jumlah", jml);
+        asset.update("nilai", nil);
+        asset.update("tanngal", tgl)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        Log.w("update", "succes");
+                        Dataasset.getDataAsset();
+                    }
+                });
+    }
+
+    public void deleteAsset(String key){
+        db.collection("user").document(User.keyDoc)
+                .collection("assetIn")
+                .document(key)
+                .delete()
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        Log.w("delete", "succes");
+                        Dataasset.getDataAsset();
                     }
                 });
     }

@@ -36,6 +36,7 @@ public class Dataasset extends Databaseconnect {
                                 assetIn.setJumlah(document.get("jumlah").toString());
                                 assetIn.setHarga(document.get("nilai").toString());
                                 assetIn.setTanggal(document.get("tanngal").toString());
+                                assetIn.setKey(document.getId());
                                 Dataasset.dataasset.add(assetIn);
                             }
                         }

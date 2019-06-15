@@ -98,7 +98,8 @@ public class Login extends AppCompatActivity {
                                         }
                                         if(User.keyDoc!=null){
                                             dialog.cancel();
-                                            if(Dataasset.dataasset!=null){
+                                            if(Dataasset.dataasset.size()!=0){
+                                                Log.w("asset", "notEmpty");
                                                 finished();
                                             }
                                         }
@@ -128,4 +129,5 @@ public class Login extends AppCompatActivity {
     void finished(){
         this.finish();
     }
+
 }
